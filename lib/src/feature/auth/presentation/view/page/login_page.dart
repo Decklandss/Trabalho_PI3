@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
 import 'package:libras/src/feature/auth/domain/usecase/login_screen_usecase.dart';
 import 'package:libras/src/feature/auth/presentation/view/page/signup_page.dart';
-import 'package:libras/src/feature/onboarding/presentation/view/page/splash_screen.dart';
 
 //import 'signup_page.dart';
 
@@ -23,18 +22,6 @@ class LoginScreen extends StatelessWidget {
         body: Container(
             padding: const EdgeInsets.only(left: 40, right: 40),
             child: ListView(children: <Widget>[
-              /*const Padding(padding: EdgeInsets.only(bottom: 40)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'lib/assets/images/logo.png',
-                    width: 300,
-                    height: 200,
-                    fit: BoxFit.fill,
-                  ),
-                ],
-              ),*/
               const Padding(padding: EdgeInsets.only(bottom: 10)),
               Row(
                 children: [
