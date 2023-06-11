@@ -17,10 +17,15 @@ class _SignupScreenState extends State<SignupScreen> {
   late ThemeData _theme;
 
   var usernameTextFieldController = TextEditingController();
+
   var nameTextFieldController = TextEditingController();
+
   var emailTextFieldController = TextEditingController();
+
   var passwordTextFieldController = TextEditingController();
+
   var confirmPasswordTextFieldController = TextEditingController();
+
   var signupUseCase = SignupUseCase();
 
   @override
@@ -42,14 +47,26 @@ class _SignupScreenState extends State<SignupScreen> {
               width: double.infinity,
               height: double.infinity,
               child: ListView(children: <Widget>[
-               
+                /*Padding(padding: EdgeInsets.only(bottom: 40)),
+                        Row(
+                            children: [
+                                Image.asset(
+                                    'lib/assets/images/logo.png',
+                                    width: 300,
+                                    height: 200,
+                                    fit: BoxFit.fill,
+                                ),
+                            ],
+                            mainAxisAlignment: MainAxisAlignment.center,
+                        ),*/
+
                 const Padding(padding: EdgeInsets.only(bottom: 10)),
                 Row(
                   children: [
                     Text(
-                      'user'.i18n(),
+                      'User'.i18n(),
                       style: const TextStyle(
-                          fontSize: 16, color: Color.fromRGBO(39,64,139, 1)),
+                          fontSize: 16, color: Color.fromRGBO(39, 64, 139, 1)),
                     ),
                   ],
                 ),
@@ -75,7 +92,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     Text(
                       'name'.i18n(),
                       style: const TextStyle(
-                          fontSize: 16, color: Color.fromRGBO(39,64,139, 1)),
+                          fontSize: 16, color: Color.fromRGBO(39, 64, 139, 1)),
                     ),
                   ],
                 ),
@@ -99,12 +116,13 @@ class _SignupScreenState extends State<SignupScreen> {
                   ],
                 ),
                 const Padding(padding: EdgeInsets.only(bottom: 10)),
+                
                 Row(
-                  children: const <Widget>[
+                  children: [
                     Text(
-                      "E-mail:",
-                      style: TextStyle(
-                          fontSize: 16, color: Color.fromRGBO(39,64,139,1)),
+                      'email'.i18n(),
+                      style: const TextStyle(
+                          fontSize: 16, color: Color.fromRGBO(39, 64, 139, 1)),
                     ),
                   ],
                 ),
@@ -132,7 +150,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     Text(
                       'password'.i18n(),
                       style: const TextStyle(
-                          fontSize: 16, color: Color.fromRGBO(39,64,139,1)),
+                          fontSize: 16, color: Color.fromRGBO(39, 64, 139, 1)),
                     ),
                   ],
                 ),
@@ -161,7 +179,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     Text(
                       'confirm_password'.i18n(),
                       style: const TextStyle(
-                          fontSize: 16, color: Color.fromRGBO(39,64,139,1)),
+                          fontSize: 16, color: Color.fromRGBO(39, 64, 139, 1)),
                     ),
                   ],
                 ),
@@ -197,6 +215,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             signupUseCase
                                 .signup(
                                     usernameTextFieldController.text,
+                                    //nameTextFieldController.text,
                                     emailTextFieldController.text,
                                     passwordTextFieldController.text,
                                     confirmPasswordTextFieldController.text)
@@ -263,14 +282,14 @@ class _SignupScreenState extends State<SignupScreen> {
                           style: ElevatedButton.styleFrom(
                             side: const BorderSide(
                               width: 2.0,
-                              color: Color.fromRGBO(108,166,205,1),
+                              color: Color.fromRGBO(108, 166, 205, 1),
                             ),
                             backgroundColor:
-                                const Color.fromRGBO(108,166,205,1),
+                                const Color.fromRGBO(108, 166, 205, 1),
                           ),
                           child: Text('register'.i18n(),
                               style: const TextStyle(
-                                  color: Color.fromARGB(255,255,255,255))),
+                                  color: Color.fromARGB(255, 255, 255, 255))),
                         ),
                       ),
                     )

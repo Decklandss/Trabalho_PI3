@@ -31,6 +31,6 @@ class SignUpDto {
         'login': username,
         'password': password,
         'email': email,
-        'admin': false
+        'admin': false,
       };
 }

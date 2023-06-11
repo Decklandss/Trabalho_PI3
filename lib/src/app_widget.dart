@@ -13,6 +13,7 @@ class AppWidget extends StatelessWidget{
   Widget build(BuildContext context) {
     
     LocalJsonLocalization.delegate.directories = ['lib/assets/i18n'];
+
     
      return MaterialApp.router(
       debugShowCheckedModeBanner: false,

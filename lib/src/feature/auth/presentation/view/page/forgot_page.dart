@@ -29,13 +29,25 @@ class _ForgotScreenState extends State<ForgotScreen> {
                 body: Container(
                     padding: EdgeInsets.only(left: 40, right: 40),
                     child: ListView(children: <Widget>[
-                        
+                        Padding(padding: EdgeInsets.only(bottom: 40)),
+                        Row(
+                            children: [
+                                Image.asset(
+                                    'lib/assets/images/logo.png',
+                                    width: 300,
+                                    height: 200,
+                                    fit: BoxFit.fill,
+                                ),
+                            ],
+                            mainAxisAlignment: MainAxisAlignment.center,
+                        ),
+
                         Padding(padding: EdgeInsets.only(bottom: 10)),
                         Row(
                             children: [
                                 Text(
                                     "E-mail:",
-                                    style: TextStyle(fontSize: 16, color: Color.fromRGBO(72,118,255,1)),
+                                    style: TextStyle(fontSize: 16, color: Color.fromRGBO(58, 152, 185,1)),
                                 ),
                             ],
                         ),
@@ -76,7 +88,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
                                                             context: context,
                                                             builder: (BuildContext context) {
                                                                 return AlertDialog(
-                                                                    title: Text('new_pass'.i18n(), style: TextStyle(fontSize: 16)),
+                                                                    title: Text('new_Pass'.i18n(), style: TextStyle(fontSize: 16)),
                                                                     content: SingleChildScrollView(
                                                                         child: ListBody(
                                                                             children: <Widget>[
@@ -104,7 +116,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
                                                             context: context,
                                                             builder: (BuildContext context) {
                                                                 return AlertDialog(
-                                                                    title: Text('pass_false'.i18n(), style: TextStyle(fontSize: 16)),
+                                                                    title: Text('new_Pass_False'.i18n(), style: TextStyle(fontSize: 16)),
                                                                     content: SingleChildScrollView(
                                                                         child: ListBody(
                                                                             children: <Widget>[
@@ -126,7 +138,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
                                                     })
                                                 },
                                             style: ElevatedButton.styleFrom(
-                                                primary: Color.fromRGBO(72,118,255,1),
+                                                primary: Color.fromRGBO(58, 152, 185,1),
                                             )),
                                         height: 40),
 

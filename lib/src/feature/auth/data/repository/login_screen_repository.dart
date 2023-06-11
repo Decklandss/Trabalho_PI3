@@ -1,27 +1,27 @@
+import 'package:dio/dio.dart';
 import '../../domain/model/user.dart';
 import '../../domain/repository/login_screen_interface.dart';
 import '../dto/user_dto.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 class LoginScreenRepository implements ILogin {
-    @override
-    Future<User> login(User user) async {
-        final dto = UserDto.fromDomain(user);
-        final Map<String, dynamic> jsonData = {'key1': 'value1', 'key2': 'value2'};
-        final response = await http.post(
-          Uri.parse('http://localhost:8082/api/users/auth'),
-          headers: <String, String>{'Content-Type': 'application/json'},
-          body: jsonEncode(dto.toJson()),                
-            );
+  @override
+  Future<User> login(User user) async {
+    final dto = UserDto.fromDomain(user);
+  
+    final response = await Dio().post('http://10.0.2.2:3000/login',
+      data: dto.toJson(),
+      queryParameters:{
+        'username': dto.toJson()['username'],
+        'password': dto.toJson()['password']
+      }
+    );
 
-        if (response.statusCode == 200) {
-            final domain = User(user.username, user.password);
-            return Future.value(domain);
-        } else {
-            final msg = "Usuário Incorreto ou Inexistente";
-            return Future.error("$msg");
-        }
+    if (response.statusCode == 200) {
+      final domain = User(user.username, user.password);
+      return Future.value(domain);
+    } else {
+      final msg = response.headers.value('Message');
+      return Future.error("$msg");
     }
+  }
 }
-

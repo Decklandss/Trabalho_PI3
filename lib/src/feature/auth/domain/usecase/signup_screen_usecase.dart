@@ -64,6 +64,27 @@ class SignupUseCase {
         RegExp validPasswordSpecialCharacter = RegExp(r"^(?=.*?[!@#\%$&*~])");
 
         RegExp validPasswordMinLength = RegExp(r"^.{8,}");
+
+        if (!validPasswordUpperCase.hasMatch(password)) {
+            return [false, 'A senha precisa ter pelo menos uma letra maiúscula.'];
+        }
+
+        if (!validPasswordLowerCase.hasMatch(password)) {
+            return [false, 'A senha precisa ter pelo menos uma letra minúscula.'];
+        }
+
+        if (!validPasswordOneDigit.hasMatch(password)) {
+            return [false, 'A senha precisa ter pelo menos um número.'];
+        }
+
+        if (!validPasswordSpecialCharacter.hasMatch(password)) {
+            return [false, 'A senha precisa ter pelo menos um caracter especial.'];
+        }
+
+        if (!validPasswordMinLength.hasMatch(password)) {
+            return [false, 'A senha precisa ter no mínimo 8 caracteres.'];
+        }
+
         return [true];
     }
 
@@ -79,11 +100,15 @@ class SignupUseCase {
         return [true];
     }
 
-    List validateAllFields(String username, String email, String password, String confirmPassword) {
+    List validateAllFields(String username,/* String name,*/ String email, String password, String confirmPassword) {
             if (!validateUsername(username)[0]) {
                 return validateUsername(username);
             }
-            
+
+            /* if (!validateName(name)[0]) {
+                return validateName(name);
+            } */
+
             if (!validateEmail(email)[0]) {
                 return validateEmail(email);
             }
@@ -99,16 +124,16 @@ class SignupUseCase {
             return [true];
         }
 
-    Future<SignupUser> signup(String username, String email, String password,  String confirmPassword) {
+    Future<SignupUser> signup(String username, /*String name,*/ String email, String password,  String confirmPassword) {
             var respValidateAllFields = validateAllFields(
-                username, email, password, confirmPassword );
+                username,/* name,*/ email, password, confirmPassword);
             
             if (!respValidateAllFields[0]) {
                 final msg = respValidateAllFields[1];
                 return Future.error(msg);
             } else {
                 return repository
-                    .signup(SignupUser(username, email, password ,confirmPassword));
+                    .signup(SignupUser(username, /*name ,*/  email, password ,confirmPassword));
             }
         }
 }

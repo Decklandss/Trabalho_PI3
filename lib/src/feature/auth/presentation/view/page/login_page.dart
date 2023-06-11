@@ -22,13 +22,25 @@ class LoginScreen extends StatelessWidget {
         body: Container(
             padding: const EdgeInsets.only(left: 40, right: 40),
             child: ListView(children: <Widget>[
+              const Padding(padding: EdgeInsets.only(bottom: 40)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/logo.png',
+                    width: 300,
+                    height: 200,
+                    fit: BoxFit.fill,
+                  ),
+                ],
+              ),
               const Padding(padding: EdgeInsets.only(bottom: 10)),
               Row(
                 children: [
                   Text(
                     'username'.i18n(),
                     style: const TextStyle(
-                        fontSize: 16, color: Color.fromRGBO(72,118,255,1)),
+                        fontSize: 16, color: Color.fromRGBO(39, 64, 139, 1)),
                   ),
                 ],
               ),
@@ -45,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
                               borderSide: const BorderSide(
-                                  color: Color.fromRGBO(72,118,255,1),
+                                  color: Color.fromRGBO(39, 64, 139, 1),
                                   width: 2.0)),
                         )),
                   ),
@@ -57,7 +69,7 @@ class LoginScreen extends StatelessWidget {
                   Text(
                     'password'.i18n(),
                     style: const TextStyle(
-                        fontSize: 16, color: Color.fromRGBO(72,118,255,1)),
+                        fontSize: 16, color: Color.fromRGBO(39, 64, 139, 1)),
                   ),
                 ],
               ),
@@ -91,53 +103,50 @@ class LoginScreen extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             side: const BorderSide(
                               width: 2.0,
-                              color: Color.fromARGB(255,0,0,0),
+                              color: Color.fromARGB(255, 0, 0, 0),
                             ),
                             backgroundColor:
-                                const Color.fromARGB(255,255,255,255),
+                                const Color.fromARGB(255, 255, 255, 255),
                           ),
                           onPressed: () => {
                                 loginUseCase
                                     .login(loginTextFieldController.text,
                                         passwordTextFieldController.text)
                                     .then((msg) {
-                                  Navigator.of(context).pop();
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SplashScreen()));
-                                }).catchError((error) {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return AlertDialog(
-                                        title: Text('username_false'.i18n(),
-                                            style:
-                                                const TextStyle(fontSize: 16)),
-                                        content: SingleChildScrollView(
-                                          child: ListBody(
-                                            children: <Widget>[
-                                              Text("$error",
-                                                  style: const TextStyle(
-                                                      fontSize: 16)),
-                                            ],
+                                      Navigator.of(context).pop();
+                                    }).catchError((error) {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: Text('username_false'.i18n(),
+                                              style:
+                                                  const TextStyle(fontSize: 16)),
+                                          content: SingleChildScrollView(
+                                            child: ListBody(
+                                              children: <Widget>[
+                                                Text("$error",
+                                                    style: const TextStyle(
+                                                        fontSize: 16)),
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        actions: <Widget>[
-                                          TextButton(
-                                            child: const Text("Ok"),
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                            },
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-                                })
+                                          actions: <Widget>[
+                                            TextButton(
+                                              child: const Text("Ok"),
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  })
                               },
                           child: Text('login'.i18n(),
                               style: const TextStyle(
-                                  color: Color.fromRGBO(72,118,255,1)))),
+                                  color: Color.fromRGBO(39, 64, 139, 1)))),
                     ),
                   )
                 ],
@@ -154,10 +163,10 @@ class LoginScreen extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             side: const BorderSide(
                               width: 2.0,
-                              color: Color.fromARGB(255,0,0,0),
+                              color: Color.fromARGB(255, 0, 0, 0),
                             ),
                             backgroundColor:
-                                const Color.fromARGB(255,255,255,255),
+                                const Color.fromARGB(255, 255, 255, 255),
                           ),
                           onPressed: () => {
                                 Navigator.of(context).push(MaterialPageRoute(
@@ -165,7 +174,7 @@ class LoginScreen extends StatelessWidget {
                               },
                           child: Text('signup'.i18n(),
                               style: const TextStyle(
-                                  color: Color.fromRGBO(72,118,255,1)))),
+                                  color: Color.fromRGBO(39, 64, 139, 1)))),
                     ),
                   )
                 ],

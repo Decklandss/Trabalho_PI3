@@ -12,6 +12,6 @@ class SignupUser {
       json['username'],
       json['email'],
       json['password'], 
-      json['confirmPassword'], 
+      json['confirmPassword'],
         token: json['token']);
 }
