@@ -39,19 +39,6 @@ class _SignupScreenState extends State<SignupScreen> {
               width: double.infinity,
               height: double.infinity,
               child: ListView(children: <Widget>[
-                /*Padding(padding: EdgeInsets.only(bottom: 40)),
-                        Row(
-                            children: [
-                                Image.asset(
-                                    'lib/assets/images/logo.png',
-                                    width: 300,
-                                    height: 200,
-                                    fit: BoxFit.fill,
-                                ),
-                            ],
-                            mainAxisAlignment: MainAxisAlignment.center,
-                        ),*/
-
                 const Padding(padding: EdgeInsets.only(bottom: 10)),
                 Row(
                   children: [

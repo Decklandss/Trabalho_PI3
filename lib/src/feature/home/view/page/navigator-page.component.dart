@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NavigatorPage extends StatefulWidget {
-  NavigatorPage({this.title, required this.child});
+  const NavigatorPage({this.title, required this.child});
 
   final Widget? title;
   final Widget child;
