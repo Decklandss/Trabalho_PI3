@@ -32,7 +32,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
                 Row(
                   children: [
                     Text(
-                      "E-mail:",
+                      'email'.i18n(),
                       style: TextStyle(
                           fontSize: 16, color: Color.fromRGBO(58, 152, 185, 1)),
                     ),

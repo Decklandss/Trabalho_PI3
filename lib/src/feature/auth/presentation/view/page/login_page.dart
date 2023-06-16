@@ -3,8 +3,6 @@ import 'package:localization/localization.dart';
 import 'package:libras/src/feature/auth/domain/usecase/login_screen_usecase.dart';
 import 'package:libras/src/feature/auth/presentation/view/page/signup_page.dart';
 
-//import 'signup_page.dart';
-
 class LoginScreen extends StatelessWidget {
   final loginTextFieldController = TextEditingController();
   final passwordTextFieldController = TextEditingController();

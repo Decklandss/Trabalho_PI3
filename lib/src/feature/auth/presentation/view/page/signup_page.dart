@@ -43,7 +43,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 Row(
                   children: [
                     Text(
-                      'User'.i18n(),
+                      'username'.i18n(),
                       style: const TextStyle(
                           fontSize: 16, color: Color.fromRGBO(39, 64, 139, 1)),
                     ),
@@ -193,7 +193,6 @@ class _SignupScreenState extends State<SignupScreen> {
                             signupUseCase
                                 .signup(
                                     usernameTextFieldController.text,
-                                    //nameTextFieldController.text,
                                     emailTextFieldController.text,
                                     passwordTextFieldController.text,
                                     confirmPasswordTextFieldController.text)
@@ -202,7 +201,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
-                                    title: Text('register_True'.i18n(),
+                                    title: Text('register_true'.i18n(),
                                         style: TextStyle(fontSize: 16)),
                                     content: SingleChildScrollView(
                                       child: ListBody(
@@ -232,7 +231,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
-                                    title: Text('register_False'.i18n(),
+                                    title: Text('register_false'.i18n(),
                                         style: const TextStyle(fontSize: 16)),
                                     content: SingleChildScrollView(
                                       child: ListBody(

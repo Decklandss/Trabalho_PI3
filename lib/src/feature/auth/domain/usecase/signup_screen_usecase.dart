@@ -88,12 +88,12 @@ class SignupUseCase {
     return [true];
   }
 
-  List validateConfirmPassword(String password, String confirmPassword) {
-    if (confirmPassword.isEmpty) {
+  List validateConfirmPassword(String password, String confirm_password) {
+    if (confirm_password.isEmpty) {
       return [false, "A confirmação da senha não pode estar em branco."];
     }
 
-    if (password != confirmPassword) {
+    if (password != confirm_password) {
       return [false, "A senha e a confirmação de senha não são as mesmas."];
     }
 
