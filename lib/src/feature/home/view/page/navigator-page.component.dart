@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class NavigatorPage extends StatefulWidget {
   NavigatorPage({this.title, required this.child});
@@ -12,8 +11,6 @@ class NavigatorPage extends StatefulWidget {
 }
 
 class _NavigatorPageState extends State<NavigatorPage> {
-  int _currentRoute = 0;
-
   @override
   void initState() {
     super.initState();
@@ -29,7 +26,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
               appBar: AppBar(
                 title: widget.title,
                 centerTitle: true,
-                backgroundColor: const Color.fromARGB(164,211,238,185),
+                backgroundColor: const Color.fromARGB(164, 211, 238, 185),
               ),
               body: widget.child,
             );

@@ -12,10 +12,6 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  late ColorScheme _colors;
-
-  late ThemeData _theme;
-
   var usernameTextFieldController = TextEditingController();
 
   var nameTextFieldController = TextEditingController();
@@ -30,10 +26,6 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Color getColor(Set<MaterialState> states) {
-      return Colors.blue;
-    }
-
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'app_name'.i18n(),
@@ -116,7 +108,6 @@ class _SignupScreenState extends State<SignupScreen> {
                   ],
                 ),
                 const Padding(padding: EdgeInsets.only(bottom: 10)),
-                
                 Row(
                   children: [
                     Text(

@@ -6,9 +6,6 @@ import 'package:libras/src/feature/auth/presentation/view/page/signup_page.dart'
 //import 'signup_page.dart';
 
 class LoginScreen extends StatelessWidget {
-  late ColorScheme _colors;
-  late Theme Data_theme;
-
   final loginTextFieldController = TextEditingController();
   final passwordTextFieldController = TextEditingController();
   final loginUseCase = LoginUseCase();
@@ -22,18 +19,6 @@ class LoginScreen extends StatelessWidget {
         body: Container(
             padding: const EdgeInsets.only(left: 40, right: 40),
             child: ListView(children: <Widget>[
-              const Padding(padding: EdgeInsets.only(bottom: 40)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'lib/assets/images/logo.png',
-                    width: 300,
-                    height: 200,
-                    fit: BoxFit.fill,
-                  ),
-                ],
-              ),
               const Padding(padding: EdgeInsets.only(bottom: 10)),
               Row(
                 children: [
@@ -113,36 +98,36 @@ class LoginScreen extends StatelessWidget {
                                     .login(loginTextFieldController.text,
                                         passwordTextFieldController.text)
                                     .then((msg) {
-                                      Navigator.of(context).pop();
-                                    }).catchError((error) {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          title: Text('username_false'.i18n(),
-                                              style:
-                                                  const TextStyle(fontSize: 16)),
-                                          content: SingleChildScrollView(
-                                            child: ListBody(
-                                              children: <Widget>[
-                                                Text("$error",
-                                                    style: const TextStyle(
-                                                        fontSize: 16)),
-                                              ],
-                                            ),
+                                  Navigator.of(context).pop();
+                                }).catchError((error) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text('username_false'.i18n(),
+                                            style:
+                                                const TextStyle(fontSize: 16)),
+                                        content: SingleChildScrollView(
+                                          child: ListBody(
+                                            children: <Widget>[
+                                              Text("$error",
+                                                  style: const TextStyle(
+                                                      fontSize: 16)),
+                                            ],
                                           ),
-                                          actions: <Widget>[
-                                            TextButton(
-                                              child: const Text("Ok"),
-                                              onPressed: () {
-                                                Navigator.of(context).pop();
-                                              },
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  })
+                                        ),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            child: const Text("Ok"),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                })
                               },
                           child: Text('login'.i18n(),
                               style: const TextStyle(
