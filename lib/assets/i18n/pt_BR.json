@@ -1,0 +1,18 @@
+{
+    "app_name": "Projeto Integrador",
+    "username": "Usuário",
+    "email": "E-mail",
+    "username_hint": "Informe o nome do seu usuário",
+    "password": "Senha",
+    "password_hint": "Informe a sua senha",
+    "login": "Login",
+    "signup": "Cadastrar",
+    "forgot_password": "Esqueci a senha!",
+    "username_required": "O usuário é obrigatório",
+    "password_required": "A senha é obrigatória",
+    "username_true": "Usuário logado com sucesso!",
+    "username_false": "Erro ao fazer o login",
+    "confirm_password": "Confirmar senha",
+    "signup_true": "Usuário cadastrado com sucesso!",
+    "signup_false": "Erro ao fazer o cadastro"
+}
