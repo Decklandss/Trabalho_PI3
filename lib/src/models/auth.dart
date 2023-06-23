@@ -73,4 +73,9 @@ class Auth with ChangeNotifier {
   Future<void> login(String email, String password) async {
     _authentication(email, password, 'signInWithPassword');
   }
+
+  //Método para atualizar a senha
+  Future<void> forget(String email, String password) async {
+    _authentication(email, password, 'forget');
+  }
 }

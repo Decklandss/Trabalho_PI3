@@ -5,11 +5,11 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text('Gestos'),
         centerTitle: true,
       ),
       body: Container(
-        child: Text('Hello'),
+        child: Text('Gestos em Java'),
       ),
     );
   }

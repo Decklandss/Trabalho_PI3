@@ -3,7 +3,7 @@ import 'package:libras/src/exceptions/auth_exception.dart';
 import 'package:libras/src/models/auth.dart';
 import 'package:provider/provider.dart';
 
-enum AuthMode { Signup, Login }
+enum AuthMode { Signup, Login, Forget }
 
 class AuthForm extends StatefulWidget {
   @override
@@ -22,11 +22,22 @@ class _AuthFormState extends State<AuthForm> {
 
   bool _isLogin() => _authMode == AuthMode.Login;
   bool _isSignup() => _authMode == AuthMode.Signup;
+  bool _isForget() => _authMode == AuthMode.Forget;
 
-  void _switchAuthMode() {
+  void _switchAuthModeSignUp() {
     setState(() {
       if (_isLogin()) {
         _authMode = AuthMode.Signup;
+      } else {
+        _authMode = AuthMode.Login;
+      }
+    });
+  }
+
+  void _switchAuthModeForget() {
+    setState(() {
+      if (_isLogin()) {
+        _authMode = AuthMode.Forget;
       } else {
         _authMode = AuthMode.Login;
       }
@@ -51,7 +62,6 @@ class _AuthFormState extends State<AuthForm> {
 
   Future<void> _submit() async {
     final isValid = _formKey.currentState?.validate() ?? false;
-
     if (!isValid) {
       return;
     }
@@ -69,8 +79,14 @@ class _AuthFormState extends State<AuthForm> {
           _authData['password']!,
         );
       } else {
-        // Register
+        // Cadastrar
         await auth.signup(
+          _authData['email']!,
+          _authData['password']!,
+        );
+
+        //Esqueci a senha
+        await auth.forget(
           _authData['email']!,
           _authData['password']!,
         );
@@ -111,21 +127,22 @@ class _AuthFormState extends State<AuthForm> {
                   }
                 },
               ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Senha'),
-                keyboardType: TextInputType.emailAddress,
-                obscureText: true,
-                controller: _passwordController,
-                onSaved: (password) => _authData['password'] = password ?? '',
-                validator: (_password) {
-                  final password = _password ?? '';
-                  if (password.isEmpty || password.length < 5) {
-                    return 'Informe uma senha válida';
-                  } else {
-                    return null;
-                  }
-                },
-              ),
+              if (_isLogin() || _isSignup())
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Senha'),
+                  keyboardType: TextInputType.emailAddress,
+                  obscureText: true,
+                  controller: _passwordController,
+                  onSaved: (password) => _authData['password'] = password ?? '',
+                  validator: (_password) {
+                    final password = _password ?? '';
+                    if (password.isEmpty || password.length < 5) {
+                      return 'Informe uma senha válida';
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
               if (_isSignup())
                 TextFormField(
                   decoration: InputDecoration(labelText: 'Confirmar senha'),
@@ -142,14 +159,61 @@ class _AuthFormState extends State<AuthForm> {
                           }
                         },
                 ),
+              if (_isForget())
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Nova senha'),
+                  keyboardType: TextInputType.emailAddress,
+                  obscureText: true,
+                  controller: _passwordController,
+                  onSaved: (password) => _authData['password'] = password ?? '',
+                  validator: (_password) {
+                    final password = _password ?? '';
+                    if (password.isEmpty || password.length < 5) {
+                      return 'Informe uma senha válida';
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+              if (_isForget())
+                TextFormField(
+                  decoration:
+                      InputDecoration(labelText: 'Confirmar nova senha'),
+                  keyboardType: TextInputType.emailAddress,
+                  obscureText: true,
+                  validator: _isLogin()
+                      ? null
+                      : (_password) {
+                          final password = _password ?? '';
+                          if (password != _passwordController.text) {
+                            return 'Senhas informadas não conferem.';
+                          } else {
+                            return null;
+                          }
+                        },
+                ),
               SizedBox(height: 20),
               if (_isLoading)
                 CircularProgressIndicator()
+              else if (!_isLoading && _isSignup())
+                ElevatedButton(
+                  onPressed: _submit,
+                  child: Text(
+                      _authMode == AuthMode.Login ? 'Entrar' : 'Cadastrar'),
+                  style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 8,
+                      )),
+                )
               else
                 ElevatedButton(
                   onPressed: _submit,
                   child: Text(
-                      _authMode == AuthMode.Login ? 'Entrar' : 'Registrar'),
+                      _authMode == AuthMode.Forget ? 'Confirmar' : 'Login'),
                   style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -161,7 +225,13 @@ class _AuthFormState extends State<AuthForm> {
                 ),
               Spacer(),
               TextButton(
-                onPressed: _switchAuthMode,
+                onPressed: _switchAuthModeForget,
+                child: Text(
+                  _isLogin() ? 'Esqueci a senha' : '',
+                ),
+              ),
+              TextButton(
+                onPressed: _switchAuthModeSignUp,
                 child: Text(
                   _isLogin() ? 'Deseja se cadastrar ?' : 'Já possui conta ?',
                 ),
